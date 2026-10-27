@@ -8,10 +8,11 @@ import javax.swing.SwingUtilities;
 
 public class App {
     public static void main(String[] args) {
+        // this just calls the service and repository class (instantiate)...
         WeatherRepository repository = new WeatherRepository();
         WeatherService service = new WeatherService(repository);
 
-        // Launch GUI on the Event Dispatch Thread
+        // fetching the frame from the DashboardFrame class
         SwingUtilities.invokeLater(() -> {
             DashboardFrame frame = new DashboardFrame(service);
             frame.setVisible(true);

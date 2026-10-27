@@ -4,35 +4,24 @@ import agosalert.model.WeatherData;
 import agosalert.repository.WeatherRepository;
 
 public class WeatherService {
-    private final WeatherRepository repository;
+    private static final String OPENWEATHER_API_KEY = "85f4b96c4618592a16717c61de4e459e";
+    private final WeatherRepository weatherRepository;
 
-    public WeatherService(WeatherRepository repository) {
-        this.repository = repository;
+    public WeatherService(WeatherRepository weatherRepository) {
+        this.weatherRepository = weatherRepository;
     }
 
-    // ADD THIS METHOD:
+    public String getApiKey() {
+        return OPENWEATHER_API_KEY;
+    }
+
     public WeatherData getWeatherData() {
-        return repository.getTodayWeather();
+        // Fallback / standard weather data for Metro Manila dashboard
+        return new WeatherData("Hulong Duhat(Malabon City), PH", 28.1, "Partly Cloudy", 76, "1.5 km/h");
     }
 
-    // Existing console method (you can keep or remove this)
     public String getFormattedDashboard() {
-        WeatherData data = repository.getTodayWeather();
-        return String.format("""
-                ===================================
-                       AGOSALERT WEATHER DASHBOARD
-                ===================================
-                 Location    : %s
-                 Temperature : %.1f °C
-                 Condition   : %s
-                 Humidity    : %d%%
-                 Wind Speed  : %s
-                ===================================""",
-                data.getLocation(),
-                data.getTemperature(),
-                data.getCondition(),
-                data.getHumidity(),
-                data.getWindSpeed()
-        );
+        WeatherData data = getWeatherData();
+        return "Region: " + data.getLocation() + " | Temp: " + data.getTemperature() + "°C | Condition: " + data.getCondition();
     }
 }
