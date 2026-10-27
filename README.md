@@ -1,5 +1,5 @@
 # AgosAlert_SoftwareEngineering
-AgosAlert WeatherForecast Dashboard app/programm made from Java SwingFx
+AgosAlert WeatherForecast Dashboard app/programm made from Java Swing
 ## Group 8 CodePals CS3301
 ### Members:
 Daguiso Romel Louis S
